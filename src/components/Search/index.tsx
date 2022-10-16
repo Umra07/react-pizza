@@ -1,5 +1,4 @@
-import React, { useContext } from 'react';
-import { SearchContext } from '../../App';
+import React from 'react';
 import { useRef, useState, useCallback } from 'react';
 
 import debounce from 'lodash.debounce';
@@ -7,28 +6,31 @@ import debounce from 'lodash.debounce';
 import classes from './Search.module.scss';
 import searchSvg from '../../assets/img/search-icon.svg';
 import clearSvg from '../../assets/img/clear-icon.svg';
+import { useDispatch } from 'react-redux';
+import { setSearchValue } from '../../redux/slices/filters/slice';
 
 const Search = () => {
-  const { setSearchValue } = useContext(SearchContext);
+  const dispatch = useDispatch();
+
   const [value, setValue] = useState('');
 
-  const inputRef = useRef();
+  const inputRef = useRef<HTMLInputElement>(null);
 
   const updateSearchValue = useCallback(
-    debounce((str) => {
-      setSearchValue(str);
+    debounce((str: string) => {
+      dispatch(setSearchValue(str));
     }, 300),
     [],
   );
 
-  const onChangeInput = (e) => {
+  const onChangeInput = (e: React.ChangeEvent<HTMLInputElement>) => {
     setValue(e.target.value);
     updateSearchValue(e.target.value);
   };
 
   const onClickClear = () => {
     setValue('');
-    inputRef.current.focus();
+    inputRef.current?.focus(); 
   };
 
   return (
@@ -37,7 +39,7 @@ const Search = () => {
       <input
         ref={inputRef}
         type="text"
-        placeholder="Маргарита..."
+        placeholder="Margherita..."
         onChange={onChangeInput}
         value={value}
       />

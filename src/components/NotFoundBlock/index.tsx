@@ -1,16 +1,16 @@
 import React from 'react';
 import classes from './NotFoundBlock.module.scss';
 
-const NotFoundBlock = () => {
+const NotFoundBlock: React.FC = () => {
   return (
     <div className={classes.root}>
       <h1>
         <span>😕</span>
         <br />
-        Ничего не найдено
+        Page is not Found
       </h1>
       <p className={classes.description}>
-        К сожалению данная страница отсутствует в нашем интернет-магазине
+        Unfortunately, this page is not available in our store
       </p>
     </div>
   );

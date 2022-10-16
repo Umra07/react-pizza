@@ -1,7 +1,12 @@
 import React from 'react';
 
-const Categories = ({ index, changeCategoryHandler }) => {
-  const categories = ['Все', 'Мясные', 'Вегетарианская', 'Гриль', 'Острые', 'Закрытые'];
+type CategoriesProps = {
+  index: number,
+  changeCategoryHandler: (i: number) => void
+}
+
+const Categories: React.FC<CategoriesProps> = React.memo(({ index, changeCategoryHandler }) => {
+  const categories: string[] = ['All', 'Meat', 'Vegeterian', 'Grill', 'Spicy'];
 
   return (
     <div className="categories">
@@ -19,6 +24,6 @@ const Categories = ({ index, changeCategoryHandler }) => {
       </ul>
     </div>
   );
-};
+});
 
 export default Categories;

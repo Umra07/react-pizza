@@ -1,11 +1,42 @@
 import React, { useState } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { selectCartItemById } from '../../redux/slices/cart/selectors';
+import { addItem } from '../../redux/slices/cart/slice';
+import { CartItem } from '../../redux/slices/cart/types';
 
-const PizzaBlock = ({ imageUrl, title, price, sizes, types }) => {
-  const typesName = ['тонкое', 'традиционное'];
+type PizzaBlockProps = {
+  id: string;
+  imageUrl: string;
+  title: string;
+  price: number;
+  sizes: number[]; 
+  types: number[];
+}
+
+const PizzaBlock: React.FC<PizzaBlockProps> = ({ id, imageUrl, title, price, sizes, types }) => {
+  const typesName = ['classic', 'thick'];
 
   const [activeType, setActiveType] = useState(0);
-
   const [activeSize, setActiveSize] = useState(0);
+
+  const cartItem = useSelector(selectCartItemById(id));
+  const addedCount = cartItem ? cartItem.count : 0;
+
+  const dispatch = useDispatch();
+
+  const onClickAdded = () => {
+    const item: CartItem = {
+      id,
+      imageUrl,
+      title,
+      price,
+      size: sizes[activeSize],
+      type: typesName[activeType],
+      count: 1,
+    };
+
+    dispatch(addItem(item));
+  };
 
   return (
     <div className="pizza-block__wrapper">
@@ -29,14 +60,14 @@ const PizzaBlock = ({ imageUrl, title, price, sizes, types }) => {
                 key={size}
                 onClick={() => setActiveSize(i)}
                 className={activeSize === i ? 'active' : ''}>
-                {size} см
+                {size} cm
               </li>
             ))}
           </ul>
         </div>
         <div className="pizza-block__bottom">
-          <div className="pizza-block__price">{`от ${price}`}</div>
-          <div className="button button--outline button--add">
+          <div className="pizza-block__price">{price + '$'}</div>
+          <div onClick={onClickAdded} className="button button--outline button--add">
             <svg
               width="12"
               height="12"
@@ -48,8 +79,8 @@ const PizzaBlock = ({ imageUrl, title, price, sizes, types }) => {
                 fill="white"
               />
             </svg>
-            <span>Добавить</span>
-            <i>0</i>
+            <span>Add</span>
+            {addedCount > 0 && <i>{addedCount}</i>}
           </div>
         </div>
       </div>
