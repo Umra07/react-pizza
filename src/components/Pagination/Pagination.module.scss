@@ -1,0 +1,40 @@
+.root {
+  display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+  svg {
+    width: 28px;
+    height: 28px;
+    transform: translateY(1px);
+    border-radius: 50%;
+    padding: 5px;
+    cursor: pointer;
+    &:hover {
+
+      outline: 1px solid #000;
+    }
+  }
+
+  ul {
+    display: flex;
+    align-items: center;
+
+    li {
+      font-size: 18px;
+      cursor: pointer;
+      padding: 3px;
+      
+      &:hover {
+        font-weight: 800;
+        
+      }
+    }
+
+    
+  }
+}
+
+.active {
+  font-weight: 800;
+}
