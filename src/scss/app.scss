@@ -31,33 +31,32 @@ body {
     p {
       font-size: 18px;
     }
-
   }
 
   &__title {
     font-weight: 800;
     font-size: 38px;
     margin: 60px 0 50px;
-    @media(max-width: 730px) {
+    @media (max-width: 730px) {
       text-align: center;
     }
   }
 
   &__items {
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  grid-template-rows: repeat(1, 1fr);
-  grid-column-gap: 11px;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    grid-template-rows: repeat(1, 1fr);
+    grid-column-gap: 11px;
 
-  @media(max-width: 1400px) {
-    grid-template-columns: repeat(3, 1fr);
-  }
-  @media(max-width: 1060px) {
-    grid-template-columns: repeat(2, 1fr);
-  }
-  @media(max-width: 730px) {
-    grid-template-columns: repeat(1, 1fr);
-  }
+    @media (max-width: 1400px) {
+      grid-template-columns: repeat(3, 1fr);
+    }
+    @media (max-width: 1060px) {
+      grid-template-columns: repeat(2, 1fr);
+    }
+    @media (max-width: 730px) {
+      grid-template-columns: repeat(1, 1fr);
+    }
   }
 
   &__top {
@@ -65,7 +64,7 @@ body {
     align-items: center;
     justify-content: space-between;
 
-    @media(max-width: 1260px) {
+    @media (max-width: 1260px) {
       .sort {
         padding-left: 20px;
         b {
@@ -115,7 +114,15 @@ body {
     }
   }
 
-  @media(max-width: 650px) {
+  .pizza-img {
+    margin-bottom: 10px;
+    border-radius: 20px;
+    height: 350px;
+    width: 100%;
+    object-fit: cover;
+  }
+
+  @media (max-width: 650px) {
     flex-direction: column;
     .header__logo {
       margin-bottom: 30px;
@@ -137,7 +144,6 @@ body {
     display: flex;
     align-items: center;
     font-size: 32px;
-
 
     svg {
       position: relative;

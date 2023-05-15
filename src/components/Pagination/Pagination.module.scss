@@ -1,40 +1,82 @@
 .root {
   display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 10px;
-  svg {
-    width: 28px;
-    height: 28px;
-    transform: translateY(1px);
-    border-radius: 50%;
-    padding: 5px;
-    cursor: pointer;
-    &:hover {
-
-      outline: 1px solid #000;
-    }
-  }
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
 
   ul {
     display: flex;
     align-items: center;
+    gap: 10px;
 
     li {
       font-size: 18px;
       cursor: pointer;
-      padding: 3px;
-      
+      display: grid;
+      color: #fe5f1e;
+      place-items: center;
+      line-height: 18px;
+      padding: 5px 9px;
+      border-radius: 50%;
+      border: 1px solid #fe5f1e;
+      transition: all 0.15s ease-in-out;
+
       &:hover {
-        font-weight: 800;
-        
+        background-color: #fe5f1e;
+        color: #fff;
+      }
+
+      &:active {
+        background-color: #e14000;
+        transform: translateY(1px);
       }
     }
-
-    
   }
 }
 
 .active {
-  font-weight: 800;
+  background-color: #fe5f1e;
+  color: #fff !important;
+}
+
+.arrow {
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  padding: 5px;
+  cursor: pointer;
+}
+
+.left {
+  &:hover {
+    animation: translateLeftArrow linear 1.2s infinite;
+  }
+}
+
+.right:hover {
+  animation: translateRightArrow linear 1.2s infinite;
+}
+
+@keyframes translateLeftArrow {
+  0% {
+    transform: translateX(0px);
+  }
+  50% {
+    transform: translateX(-10px);
+  }
+  100% {
+    transform: translateX(0px);
+  }
+}
+
+@keyframes translateRightArrow {
+  0% {
+    transform: translateX(0px);
+  }
+  50% {
+    transform: translateX(10px);
+  }
+  100% {
+    transform: translateX(0px);
+  }
 }

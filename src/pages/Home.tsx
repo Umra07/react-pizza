@@ -8,12 +8,14 @@ import { useAppDispatch } from '../redux/store';
 import { selectFilters } from '../redux/slices/filters/selectors';
 import { selectPizza } from '../redux/slices/pizza/selectors';
 
-
 import Categories from '../components/Categories';
 import PizzaBlock from '../components/PizzaBlock';
 import Skeleton from '../components/PizzaBlock/Skeleton';
 import Pagination from '../components/Pagination';
 import SortPopup from '../components/Sort';
+import { Pizza } from '../redux/slices/pizza/types';
+
+import background from '../assets/pizza.jpg';
 
 const Home: React.FC = () => {
   const dispatch = useAppDispatch();
@@ -46,10 +48,11 @@ const Home: React.FC = () => {
   }, [categoryId, sort.sortProperty, searchValue, currentPage]);
 
   const skeletons = [...new Array(4)].map((_, i) => <Skeleton className="pizza-block" key={i} />);
-  const pizzas = items.map((pizza: any) => <PizzaBlock key={pizza.id} {...pizza} />);
+  const pizzas = items.map((pizza: Pizza) => <PizzaBlock key={pizza.id} {...pizza} />);
 
   return (
     <div className="container">
+      <img className="pizza-img" src={background} alt="tastiest pizzas" />
       <div className="content__top">
         <Categories index={categoryId} changeCategoryHandler={onClickCategory} />
         <SortPopup sort={sort} />
