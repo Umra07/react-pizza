@@ -1,4 +1,4 @@
-import React, { useEffect, useRef } from 'react';
+import { useEffect, useRef } from 'react';
 import logoSvg from '../assets/img/pizza-logo.svg';
 import { Link } from 'react-router-dom';
 import Search from './Search';
@@ -7,16 +7,16 @@ import { selectCart } from '../redux/slices/cart/selectors';
 
 const Header = () => {
   const { items, totalCount, totalPrice } = useSelector(selectCart);
-  
+
   const isMounted = useRef(false);
 
   useEffect(() => {
-    if(isMounted.current) {
+    if (isMounted.current) {
       const json = JSON.stringify(items);
       localStorage.setItem('cart', json);
     }
     isMounted.current = true;
-  }, [items])
+  }, [items]);
 
   return (
     <div className="header">
@@ -26,7 +26,7 @@ const Header = () => {
             <img width="38" src={logoSvg} alt="Pizza logo" />
             <div>
               <h1>Pizza</h1>
-              <p>The tastiest pizza in the universe</p>
+              <p className="logo-text">The tastiest pizza in the universe</p>
             </div>
           </div>
         </Link>

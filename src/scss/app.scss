@@ -74,7 +74,6 @@ body {
 
       .categories {
         width: 100%;
-        overflow: auto;
         ul {
           width: 785px;
         }
@@ -365,9 +364,17 @@ body {
     width: 560px;
     text-align: center;
 
+    @media (max-width: 426px) {
+      width: 320px;
+    }
+
     h2 {
       font-size: 32px;
       margin-bottom: 10px;
+
+      @media (max-width: 426px) {
+        font-size: 21px;
+      }
     }
 
     p {
@@ -375,6 +382,10 @@ body {
       line-height: 145.4%;
       letter-spacing: 0.01em;
       color: #777777;
+
+      @media (max-width: 426px) {
+        font-size: 12px;
+      }
     }
 
     icon {
@@ -386,6 +397,10 @@ body {
       display: block;
       width: 300px;
       margin: 45px auto 60px;
+
+      @media (max-width: 426px) {
+        width: 200px;
+      }
     }
 
     .button--black {
