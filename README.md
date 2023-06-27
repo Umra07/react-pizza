@@ -7,7 +7,7 @@ This application allows you to order your favorite pizza, where you can choose t
 ---
 
 ## Tech stack
-- Javascript/Typesctipt
+- Javascript/Typescript
 - React
 - Redux
 - React Router DOM
